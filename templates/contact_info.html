@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Information{% endblock %}
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-1">
+
+    </div>
+	<div class="col-md-3">
+		<div class="card card-body shadow p-3 mb-5 bg-white rounded">
+			
+            <div class="list-group list-group-flush">
+                <header class="card-header"><h6 class="title">Profile Settings </h6></header>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'basic-information' %}">Basic Information</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'contact-information' %}">contact Information</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Password</a>
+            </div>
+		
+		</div>
+	</div>
+	<div class="col-md-7">
+		<div class="card card-body shadow p-3 mb-5 bg-white rounded">
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                {{ form.sort_name }}
+                <label class="form-label" for="form3Example1">Nick Name :</label>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                {{ form.contact_number }}
+                <label class="form-label" for="form3Example1">Personal Contact Number :</label>
+            </div>
+          </div>
+          </div>
+				  <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline pic">
+                {{ form.profile_pic }}
+              </div>
+            </div>
+        </div>
+
+        <input class="btn btn-success" type="submit" name="Update Information">
+			</form>
+		</div>
+	</div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+
+
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].className='form-control';
+    form_fields[2].className='form-control';
+    form_fields[2].placeholder='E.g.(+88017........)';
+    form_fields[4].className='form-control';
+  
+  </script>
+
+{% endblock %}

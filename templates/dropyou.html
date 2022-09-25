@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9 card shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="card-body">
+            
+            <h3 style="text-align: center;">Drop Your Details Here</h3>
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                {{ user.username }}
+                {{ form.name }}
+                {{ form.position }}
+                {{ form.file }}
+                {{ form.text }}
+                <input class="btn btn-success" type="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].className='form-control';
+
+
+    var form_fields = document.getElementsByTagName('select')
+    form_fields[0].className='form-select';
+
+    var form_fields = document.getElementsByTagName('textarea')
+    form_fields[0].className='form-control';
+
+  </script>
+
+{% endblock %}

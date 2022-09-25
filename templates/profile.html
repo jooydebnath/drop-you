@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+
+<style>
+	.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+</style>
+
+<br>
+<div class="row">
+    <div class="col-md-1">
+
+    </div>
+	<div class="col-md-3">
+		<div class="card card-body shadow p-3 mb-5 bg-white rounded">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <a class="btn btn-warning shadow rounded" href="{% url 'home' %}"> Back</a>
+        </div>
+        <div class="col">
+          <a class="btn btn-danger shadow rounded" href="{% url 'profile-settings' %}">Settings</a>
+        </div>
+        <div class="col">
+
+        </div>
+      </div>
+			<hr>
+			<h3 style="text-align: center">Account Information</h3>
+			<hr>
+			<img class="profile-pic" src="{{request.user.userprofile.profile_pic.url}}" >
+			<h1 class="mx-auto">{{ user.first_name }}  {{ user.last_name }}</h1>
+		
+		</div>
+	</div>
+	<div class="col-md-7">
+		<div class="card card-body shadow p-3 mb-5 bg-white rounded">
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              {{ fm.first_name }}
+              <label class="form-label" for="form3Example1">First name</label>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              {{ fm.last_name }}
+              <label class="form-label" for="form3Example2">Last name</label>
+            </div>
+          </div>
+          </div>
+				  <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                {{ form.sort_name }}
+                <label class="form-label" for="form3Example1">Nick Name</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                {{ fm.username }}
+                <label class="form-label" for="form3Example2">UserName</label>
+              </div>
+            </div>
+          </div>
+
+				  <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                {{ fm.email }}
+                <label class="form-label" for="form3Example1">Email Address</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                {{ form.contact_number }}
+                <label class="form-label" for="form3Example2">Personal Contact Number</label>
+              </div>
+            </div>
+          </div>
+				  
+				  This User's Last Login Date & Time : {{ user.last_login }}<br>
+				  Your Account Created Date & Time : {{ user.date_joined }}<br>
+
+			</form>
+		</div>
+	</div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+
+
+
+
+<script>
+  var form_fields = document.getElementsByTagName('input')
+  form_fields[1].className='form-control';
+  form_fields[2].className='form-control';
+	form_fields[3].className='form-control';
+	form_fields[4].className='form-control';
+	form_fields[5].className='form-control';
+	form_fields[6].className='form-control';
+
+	form_fields[6].placeholder='E.g.(+88017........)'
+
+</script>
+
+{% endblock %}

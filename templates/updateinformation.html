@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+Profile Settings
+{% endblock %}
+
+{% load static %}
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-1">
+
+    </div>
+	<div class="col-md-3">
+		<div class="card card-body shadow p-3 mb-5 bg-white rounded">
+
+			<a class="btn btn-warning shadow rounded" href="{% url 'profile' %}">Back to profile</a><br>
+            <div class="list-group list-group-flush">
+                <header class="card-header"><h6 class="title">Profile Settings</h6></header>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'basic-information' %}">Basic Information</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'contact-information' %}">contact Information</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Password</a>
+            </div>
+		
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
